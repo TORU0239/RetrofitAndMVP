@@ -11,6 +11,7 @@ import io.toru.retrofitandmvp.base.presenter.BasePresenter;
  * Created by toru on 2016. 8. 11..
  */
 public abstract class BaseActivity extends AppCompatActivity{
+
     protected BasePresenter basePresenter;
 
     @Override
@@ -18,9 +19,8 @@ public abstract class BaseActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
         ButterKnife.bind(this);
-        setActivityPresenter();
+        setPresenter();
     }
-
     public abstract int getLayoutID();
-    public abstract void setActivityPresenter();
+    public abstract void setPresenter();
 }

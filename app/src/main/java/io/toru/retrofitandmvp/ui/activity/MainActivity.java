@@ -32,8 +32,14 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void setActivityPresenter() {
+    public void setPresenter() {
         basePresenter = new MainPresenterImp(this);
+        basePresenter.onInitView();
+    }
+
+    @Override
+    public void onInitView() {
+        // view 의 initialization. 아직은 아무것도 하지 않는다
     }
 
     @Override

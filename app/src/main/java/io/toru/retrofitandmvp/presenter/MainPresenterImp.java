@@ -12,8 +12,15 @@ public class MainPresenterImp implements MainPresenter {
         this.mainView = mainView;
     }
 
+    // click action 의 핸들링
     @Override
     public void onClick() {
         mainView.onWriteTextView();
+    }
+
+    // view initializing.
+    @Override
+    public void onInitView() {
+        mainView.onInitView();
     }
 }

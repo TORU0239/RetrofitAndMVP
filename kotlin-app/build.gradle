@@ -1,0 +1,126 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+    defaultConfig {
+        applicationId "io.toru.retrofitandmvp.kotlin"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+        maxProcessCount Math.max(1, ((int) (Runtime.getRuntime().availableProcessors() / 2)))
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force rootProject.ext.dependencies.library.support_annotation
+        }
+    }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+
+    packagingOptions.excludes = [
+            'META-INF/DEPENDENCIES',
+            'META-INF/LICENSE',
+            'META-INF/LICENSE.txt',
+            'LICENSE.txt',
+            'LICENSE',
+            'META-INF/license.txt',
+            'META-INF/NOTICE',
+            'NOTICE',
+            'asm-license.txt',
+            'META-INF/NOTICE.txt',
+            'META-INF/notice.txt',
+            'META-INF/ASL2.0',
+            'META-INF/maven/com.google.guava/guava/pom.properties',
+            'META-INF/maven/com.google.guava/guava/pom.xml'
+    ]
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    repositories {
+        jcenter()
+    }
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    androidTestCompile rootProject.ext.dependencies.test.testrunner
+    androidTestCompile rootProject.ext.dependencies.test.testrule
+    androidTestCompile rootProject.ext.dependencies.test.espresso_core
+    androidTestCompile rootProject.ext.dependencies.test.espresso_intent
+    androidTestCompile rootProject.ext.dependencies.test.dexmaker_mockito
+    androidTestCompile rootProject.ext.dependencies.test.mockito
+    androidTestCompile rootProject.ext.dependencies.test.dexmaker_dx
+    androidTestCompile rootProject.ext.dependencies.test.awaitility
+    androidTestCompile rootProject.ext.dependencies.test.assertj_android
+    androidTestCompile rootProject.ext.dependencies.test.assertj_android_support
+    androidTestCompile rootProject.ext.dependencies.test.assertj_android_appcompat
+    androidTestCompile rootProject.ext.dependencies.test.assertj_android_recyclerview
+    androidTestCompile rootProject.ext.dependencies.test.kotlin_test
+    androidTestCompile rootProject.ext.dependencies.test.kotlin_test_junit
+    androidTestCompile rootProject.ext.dependencies.library.kotlin
+    kaptAndroidTest rootProject.ext.dependencies.library.dagger2Apt
+
+
+    compile rootProject.ext.dependencies.library.support_appcompat
+
+    compile rootProject.ext.dependencies.library.kotlin
+
+    compile rootProject.ext.dependencies.library.dagger2
+    kapt rootProject.ext.dependencies.library.dagger2Apt
+    provided rootProject.ext.dependencies.library.jsr250
+
+    compile rootProject.ext.dependencies.library.rxandroid
+    compile rootProject.ext.dependencies.library.rxjava
+
+    compile rootProject.ext.dependencies.library.retrofit2
+    compile rootProject.ext.dependencies.library.retrofit2_gson
+    compile rootProject.ext.dependencies.library.retrofit2_rxadapter
+    compile rootProject.ext.dependencies.library.okhttp3
+    compile rootProject.ext.dependencies.library.okhttp3_logging
+
+    provided rootProject.ext.dependencies.library.auto_gson
+    kapt rootProject.ext.dependencies.library.auto_gson
+    kapt rootProject.ext.dependencies.library.auto_value_gson
+    provided rootProject.ext.dependencies.library.auto_value_gson
+
+}

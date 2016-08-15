@@ -1,4 +1,4 @@
-package io.toru.retrofitandmvp.network;
+package io.toru.retrofitandmvp.network.task;
 
 import java.util.List;
 

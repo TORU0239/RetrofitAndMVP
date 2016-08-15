@@ -6,5 +6,5 @@ package io.toru.retrofitandmvp.view;
 public interface MainView {
     // View 를 담당하는 interface 는 뷰 갱신 로직만 담고 있어야 한다
     void onInitView();
-    void onWriteTextView();
+    void onUpdateRecyclerView(Object obj);
 }

@@ -34,7 +34,7 @@ public class MainPresenterImp implements MainPresenter {
                     Log.w(TAG, "onResponse: size :: " + questionResult.items.size());
                     Log.w(TAG, "onResponse: " + new Gson().toJson(questionResult));
 
-                    mainView.onWriteTextView();
+                    mainView.onUpdateRecyclerView(questionResult.items);
                 }
                 else{
                     // network fail case?

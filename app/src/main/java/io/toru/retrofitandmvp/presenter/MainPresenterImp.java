@@ -4,19 +4,12 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-
 import io.toru.retrofitandmvp.network.operator.NetworkOperator;
-import io.toru.retrofitandmvp.network.task.StackOverFlowApi;
 import io.toru.retrofitandmvp.network.task.StackOverFlowQuestion;
 import io.toru.retrofitandmvp.view.MainView;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by toru on 2016. 8. 11..

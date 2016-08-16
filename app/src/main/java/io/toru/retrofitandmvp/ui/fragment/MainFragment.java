@@ -28,9 +28,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MainFragment extends Fragment implements MainView {
 
     @BindView(R.id.main_recyclerview)

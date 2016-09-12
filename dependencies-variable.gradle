@@ -1,6 +1,6 @@
 ext.dependencies = [
         classpath: [
-                android    : 'com.android.tools.build:gradle:2.1.2',
+                android    : 'com.android.tools.build:gradle:2.1.3',
                 kotlin     : 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.3',
                 android_apt: 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         ],
